@@ -1,14 +1,24 @@
 import React from 'react'
 import {Route, IndexRoute} from 'react-router'
 import Template from '../containers/Template'
+import Home from '../containers/Home'
+import Profile from '../containers/Profile'
 
 const createRoutes = () => {
 	return (
+		// BELOW IS A ROOT ROUTE WITH CHILD ROUTES NESTED INSIDE 
+		// COMPONENTS LIVE IN SRC/CONTAINERS FOLDER
 		<Route
 			path='/'
 			component={Template}
 		>
-
+    	<IndexRoute
+    		component={Home}
+    	/>
+    	<Route
+    		path={'/profile'}
+    		component={Profile}
+    	/>
 		</Route>
 	)
 }
