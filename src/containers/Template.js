@@ -16,7 +16,7 @@ class Template extends Component {
 						<RaisedButton
 							label={'Test Button'}
 							primary={true}
-							onTouchTap={()=>{console.log('Hello, I work!')}}
+							onTouchTap={()=>{alert('Hello, I work!')}}
 						/>
 					</header>
 					<main>
