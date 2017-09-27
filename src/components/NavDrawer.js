@@ -2,9 +2,10 @@ import React, {Component} from 'react'
 import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
 import Divider from 'material-ui/Divider'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import Menu from 'material-ui/svg-icons/navigation/menu'
 import {Link} from 'react-router'
+import {NavToggleButton} from '../styled/NavDrawer' 
+// ^wrapped in brackets becuase it is one of several 
+//  components being exported^
 
 class NavDrawer extends Component {
 	state = {
@@ -14,7 +15,8 @@ class NavDrawer extends Component {
 	toggle = () => {
 		this.setState((prevState, props) => {
 			return {
-				open: !prevState.open
+				open: !prevState.open,
+				width: 250
 			}
 		})
 	}
@@ -22,13 +24,13 @@ class NavDrawer extends Component {
 	render() {
 		return (
 			<div>
-				<FloatingActionButton
-					onTouchTap={this.toggle}
-				>
-					<Menu/>
-				</FloatingActionButton>
+				<NavToggleButton
+					toggle={this.toggle}
+					width={this.state.width}
+				/>
 				<Drawer
 					open={this.state.open}
+					width={this.state.width}
 				>
 					<div
 						style={{
