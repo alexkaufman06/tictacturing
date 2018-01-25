@@ -4,6 +4,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import PropTypes from 'prop-types'
 import NavDrawer from '../components/NavDrawer.js'
 import {Header, Main} from '../styled/Template'
+import Relay from 'react-relay/classic'
 
 injectTapEventPlugin()
 
@@ -29,4 +30,16 @@ Template.propTypes = {
 	children: PropTypes.element.isRequired
 }
 
-export default Template
+export default Relay.createContainer(
+	Template, {
+		fragments: {
+			viewer: () => Relay.QL`
+				fragment on Viewer {
+					user {
+						id
+					}
+				}
+			`,
+		}
+	}
+)
